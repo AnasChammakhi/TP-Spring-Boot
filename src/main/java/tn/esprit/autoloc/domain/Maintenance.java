@@ -23,4 +23,7 @@ public class Maintenance {
     private LocalDate dateFin;
     @Column(nullable = false, length = 20)
     private String description;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Vehicule vehicule;
 }

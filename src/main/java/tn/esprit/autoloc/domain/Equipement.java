@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -17,4 +19,7 @@ public class Equipement {
     private Long idEquipement;
     @Column(nullable = false, length = 20)
     private String libelle;
+
+    @ManyToMany(mappedBy = "equipements", fetch = FetchType.LAZY)
+    private Set<Vehicule> vehicules = new HashSet<>();
 }
