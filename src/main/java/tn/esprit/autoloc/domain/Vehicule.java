@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +41,6 @@ public class Vehicule {
     private Set<Equipement> equipements = new HashSet<>();
 
     @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Maintenance> maintenances;
+    private List<Maintenance> maintenances = new ArrayList<>();
 
 }

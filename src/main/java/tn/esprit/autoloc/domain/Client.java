@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,5 +33,5 @@ public class Client {
     private LocalDate dateInscription;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Reservation> reservations;
+    private List<Reservation> reservations = new ArrayList<>();
 }
