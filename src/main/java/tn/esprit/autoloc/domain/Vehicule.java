@@ -1,14 +1,13 @@
 package tn.esprit.autoloc.domain;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 @Entity
 @Table(name = "vehicule")
 @Getter
@@ -33,14 +32,13 @@ public class Vehicule {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatutVehicule statut;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.LAZY)
     private Agence agence;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Equipement> equipements = new HashSet<>();
-
-    @OneToMany(mappedBy = "vehicule", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Maintenance> maintenances = new ArrayList<>();
+    @OneToMany(mappedBy = "vehicule",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Maintenance> maintenance;
+    @ManyToMany(mappedBy = "vehicules",  fetch = FetchType.LAZY)
+    private List<Equipement> equipment;
+    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Reservation> reservation;
 
 }

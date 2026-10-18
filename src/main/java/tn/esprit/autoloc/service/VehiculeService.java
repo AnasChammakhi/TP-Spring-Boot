@@ -1,12 +1,13 @@
 package tn.esprit.autoloc.service;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import tn.esprit.autoloc.repository.IVehiculeRepository;
+import tn.esprit.autoloc.domain.Vehicule;
 
-@Service
-@RequiredArgsConstructor
-public class VehiculeService {
+import java.util.List;
 
-    private final IVehiculeRepository vehiculeRepository;
+public interface VehiculeService {
+    Vehicule getById(long id);
+    List<Vehicule> getAll();
+    Boolean update(Vehicule v);
+    Boolean remove(Vehicule v);
+    Vehicule addv(Vehicule v);
 }

@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,15 +20,13 @@ public class Contrat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idContrat;
     @Column(nullable = false)
-    private LocalDate dateSignature;
+    private Date dateSignature;
     @Column(nullable = false)
-    private Double montantTotal;
+    private Number montantTotal;
     @Column(nullable = false)
-    private Boolean valide;
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Paiement> paiements = new ArrayList<>();
-
-    @OneToOne(fetch = FetchType.LAZY)
+    private boolean valide;
+    @OneToOne
     private Reservation reservation;
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    private List<Paiement> paiements = new ArrayList<>();
 }

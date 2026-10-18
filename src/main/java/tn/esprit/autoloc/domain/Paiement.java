@@ -6,24 +6,26 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Paiement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPaiement;
     @Column(nullable = false)
-    private Double montant;
+    private Number montant;
     @Column(nullable = false)
-    private LocalDate datePaiement;
+    private Date datePaiement;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
     private ModePaiement modePaiement;
     @ManyToOne(fetch = FetchType.LAZY)
     private Contrat contrat;
 }
+
+

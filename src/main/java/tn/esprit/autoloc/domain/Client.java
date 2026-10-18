@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -18,20 +18,19 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idClient;
+    private Long idCient;
     @Column(nullable = false, length = 20)
     private String nom;
     @Column(nullable = false, length = 20)
     private String prenom;
     @Column(nullable = false, length = 20)
-    private String email;
+    private String elmail;
+    @Column(nullable = false, length = 8)
+    private Number telephone;
     @Column(nullable = false, length = 20)
-    private String telephone;
-    @Column(nullable = false, length = 20)
-    private String numPermis;
+    private Number numPermis;
     @Column(nullable = false)
-    private LocalDate dateInscription;
-
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private List<Reservation> reservations = new ArrayList<>();
+    private Date dateInscription;
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Reservation> reservations;
 }

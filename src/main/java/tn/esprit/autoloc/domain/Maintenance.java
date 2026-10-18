@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -18,12 +18,11 @@ public class Maintenance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMaintenance;
     @Column(nullable = false)
-    private LocalDate dateDebut;
+    private Date dateDebut;
     @Column(nullable = false)
-    private LocalDate dateFin;
-    @Column(nullable = false, length = 20)
+    private Date dateFin;
+    @Column(nullable = false)
     private String description;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Vehicule vehicule;
 }
