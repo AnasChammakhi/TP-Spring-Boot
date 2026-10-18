@@ -36,8 +36,6 @@ public class ContratServiceImpl implements IcontratService {
     public Contrat update(Long id, Contrat contrat) {
         Contrat existant = findByid(id);
         existant.setMontantTotal(contrat.getMontantTotal());
-        // recopier ici les autres attributs modifiables du contrat (Atelier 2),
-        // sans toucher à l'identifiant ni à la collection de paiements
         return contratRepository.save(existant);
     }
 
