@@ -33,8 +33,8 @@ public class Agence {
     @Column(nullable = false, length = 50)
     private String adresse;
 
-    @Column(nullable = false, length = 8)
-    private Number telephone;
+    @Column(nullable = false, length = 20)
+    private String telephone;
 
     @JsonIgnore
     @OneToMany (mappedBy = "agence", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -43,12 +43,4 @@ public class Agence {
     @JsonIgnore
     @OneToMany (mappedBy = "agence", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Vehicule> vehicules;
-
-    public Long getId() {
-        return idAgence;
-    }
-
-    public void setId(Long id) {
-        this.idAgence = id;
-    }
 }

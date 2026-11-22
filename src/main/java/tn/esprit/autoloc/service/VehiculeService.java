@@ -10,4 +10,8 @@ public interface VehiculeService {
     Boolean update(Vehicule v);
     Boolean remove(Vehicule v);
     Vehicule addv(Vehicule v);
+    Vehicule assignVehiculeToAgence(Long idVehicule, Long idAgence);
+
+    List<Vehicule> findByIdContrat(Long idContrat);
+    List<Vehicule> findByIdMaintenance(Long idMaintenance);
 }

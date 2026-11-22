@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.domain.Agence;
+import tn.esprit.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.service.IagenceService;
 
 import java.util.List;
@@ -71,5 +72,29 @@ public class AgenceController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@Parameter(description = "Identifiant de l'agence") @PathVariable Long id) {
         agenceService.remove(agenceService.getById(id));
+    }
+
+    @Operation(summary = "Affecter un véhicule à une agence")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Véhicule affecté à l'agence avec succès"),
+        @ApiResponse(responseCode = "404", description = "Agence ou Véhicule introuvable")
+    })
+    @PutMapping("/{idAgence}/vehicules/{idVehicule}")
+    public Vehicule assignVehiculeToAgence(
+            @Parameter(description = "Identifiant de l'agence") @PathVariable Long idAgence,
+            @Parameter(description = "Identifiant du véhicule") @PathVariable Long idVehicule) {
+        return agenceService.assignVehiculeToAgence(idVehicule, idAgence);
+    }
+
+    @Operation(summary = "Affecter un véhicule à une agence (syntaxe alternative)")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Véhicule affecté à l'agence avec succès"),
+        @ApiResponse(responseCode = "404", description = "Agence ou Véhicule introuvable")
+    })
+    @PutMapping("/assign-vehicule/{idVehicule}/{idAgence}")
+    public Vehicule assignVehiculeToAgenceAlt(
+            @Parameter(description = "Identifiant du véhicule") @PathVariable Long idVehicule,
+            @Parameter(description = "Identifiant de l'agence") @PathVariable Long idAgence) {
+        return agenceService.assignVehiculeToAgence(idVehicule, idAgence);
     }
 }

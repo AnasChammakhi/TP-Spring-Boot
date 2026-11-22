@@ -35,14 +35,6 @@ public class Equipement {
     @ManyToMany
     private List<Vehicule> vehicules;
 
-    public Long getId() {
-        return idEquipement;
-    }
-
-    public void setId(Long id) {
-        this.idEquipement = id;
-    }
-
     public String getLibelle() {
         return libelle;
     }

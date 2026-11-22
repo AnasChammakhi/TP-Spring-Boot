@@ -34,13 +34,5 @@ public class Employe {
     @ManyToOne (fetch = FetchType.LAZY)
     @JsonIgnoreProperties({"employees", "vehicules"})
     private Agence agence;
-
-    public Long getId() {
-        return idEmploye;
-    }
-
-    public void setId(Long id) {
-        this.idEmploye = id;
-    }
 }
 

@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.Config;
 
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tn.esprit.autoloc.domain.CategorieVehicule;
@@ -11,6 +12,7 @@ import tn.esprit.autoloc.repository.VehiculeRepository;
 import java.math.BigDecimal;
 
 @Configuration
+@ConditionalOnProperty(name = "app.data-initializer.enabled", havingValue = "true", matchIfMissing = false)
 public class DataInitializer {
 
     @Bean

@@ -35,11 +35,11 @@ public class Client {
     @JsonAlias({"email", "elmail"})
     private String elmail;
 
-    @Column(nullable = false, length = 8)
-    private Number telephone;
-
     @Column(nullable = false, length = 20)
-    private Number numPermis;
+    private String telephone;
+
+    @Column(nullable = false, length = 30)
+    private String numPermis;
 
     @Column(nullable = false)
     private Date dateInscription;
@@ -47,29 +47,5 @@ public class Client {
     @JsonIgnore
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Reservation> reservations;
-
-    public Long getId() {
-        return idCient;
-    }
-
-    public void setId(Long id) {
-        this.idCient = id;
-    }
-
-    public Long getIdClient() {
-        return idCient;
-    }
-
-    public void setIdClient(Long idClient) {
-        this.idCient = idClient;
-    }
-
-    public String getEmail() {
-        return elmail;
-    }
-
-    public void setEmail(String email) {
-        this.elmail = email;
-    }
 }
 

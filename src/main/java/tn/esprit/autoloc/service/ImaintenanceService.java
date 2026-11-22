@@ -10,4 +10,6 @@ public interface ImaintenanceService {
     Boolean update(Maintenance m);
     Boolean remove(Maintenance m);
     Maintenance addm(Maintenance m);
+
+    List<Maintenance> findByIdVehicule(Long idVehicule);
 }

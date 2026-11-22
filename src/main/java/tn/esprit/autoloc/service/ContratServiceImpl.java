@@ -46,4 +46,9 @@ public class ContratServiceImpl implements IcontratService {
         }
         contratRepository.deleteById(id);
     }
+
+    @Override
+    public List<Contrat> findByIdVehicule(Long idVehicule) {
+        return contratRepository.findByReservation_Vehicule_IdVehicule(idVehicule);
+    }
 }

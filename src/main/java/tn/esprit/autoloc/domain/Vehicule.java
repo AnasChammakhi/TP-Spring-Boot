@@ -61,12 +61,4 @@ public class Vehicule {
     @JsonIgnore
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Reservation> reservation;
-
-    public Long getId() {
-        return idVehicule;
-    }
-
-    public void setId(Long id) {
-        this.idVehicule = id;
-    }
 }

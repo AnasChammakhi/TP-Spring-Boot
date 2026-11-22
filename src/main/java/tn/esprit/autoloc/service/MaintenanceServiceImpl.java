@@ -39,4 +39,9 @@ public class MaintenanceServiceImpl implements ImaintenanceService {
     public Maintenance addm(Maintenance m) {
         return maintenanceRepository.save(m);
     }
+
+    @Override
+    public List<Maintenance> findByIdVehicule(Long idVehicule) {
+        return maintenanceRepository.findByVehicule_IdVehicule(idVehicule);
+    }
 }

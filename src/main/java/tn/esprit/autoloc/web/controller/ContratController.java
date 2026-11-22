@@ -70,4 +70,15 @@ public class ContratController {
     public void deleteById(@Parameter(description = "Identifiant du contrat") @PathVariable Long id) {
         contratService.deleteById(id);
     }
+
+    @Operation(summary = "Lister les contrats par Id véhicule")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "Liste des contrats du véhicule récupérée avec succès"),
+        @ApiResponse(responseCode = "404", description = "Véhicule introuvable")
+    })
+    @GetMapping("/vehicule/{idVehicule}")
+    public List<Contrat> findByIdVehicule(
+            @Parameter(description = "Identifiant du véhicule") @PathVariable Long idVehicule) {
+        return contratService.findByIdVehicule(idVehicule);
+    }
 }
