@@ -51,10 +51,6 @@ public class Vehicule {
     private Agence agence;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "vehicule",  fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Maintenance> maintenance;
-
-    @JsonIgnore
     @ManyToMany(mappedBy = "vehicules",  fetch = FetchType.LAZY)
     private List<Equipement> equipment;
 

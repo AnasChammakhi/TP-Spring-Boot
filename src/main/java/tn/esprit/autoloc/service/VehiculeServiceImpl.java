@@ -67,6 +67,6 @@ public class VehiculeServiceImpl implements VehiculeService {
 
     @Override
     public List<Vehicule> findByIdMaintenance(Long idMaintenance) {
-        return vehiculeRepository.findByMaintenance_IdMaintenance(idMaintenance);
+        return vehiculeRepository.findByMaintenanceId(idMaintenance);
     }
 }
